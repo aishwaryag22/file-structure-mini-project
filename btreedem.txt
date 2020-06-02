@@ -1,0 +1,151 @@
+
+package aish;
+import java.io.*;
+import java.util.HashMap;
+public class btreedem {
+    static int i=1;
+    static HashMap<Integer, String> mat = new HashMap<>();
+     public static BTree btreecon()
+     {
+        BTree BTree = new BTree();
+                String fileName = "C:\Users\G Aishwarya\Desktop\New folder\\dataset.txt";
+        String fn ="C:\Users\G Aishwarya\Desktop\New folder\\d.txt";
+        String line = null;
+       try {
+            FileReader fileReader = new FileReader(fileName);
+            FileWriter fileWriter = new FileWriter(fn);
+            PrintWriter pw =new PrintWriter(fn);
+      BufferedReader bufferedReader = new BufferedReader(fileReader); 
+      
+             while((line = bufferedReader.readLine()) != null) {
+                //              StringBuffer sb = new StringBuffer(line);
+//                String sg = sb.toString();
+     String[] af=line.split(",");
+            	
+            	 BTree.insert(i);
+                 
+            	 //System.out.println(line.length()+line+line.hashCode());
+                mat.put(i,line);
+                i++;
+                 } 
+           
+            
+            		 
+             pw.close();
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(ex);                
+        }
+        catch(IOException ex) {
+            System.out.println(ex);                  
+            
+        }
+        return BTree;
+    
+}
+      public static boolean serch(String a,BTree f)
+    {
+        int k=0;
+      for(HashMap.Entry entry: mat.entrySet()){
+          String fg=(String)entry.getValue();
+            if(fg.contains(a)){
+                 k = (int) entry.getKey();
+                 //breaking because its one to one map
+                 
+            }
+        
+           
+       
+      
+    }String d=mat.get(k);
+    
+    if(d!=null)
+    {
+    String [] sd= d.split(",");
+    System.out.println("id:"+sd[0]);
+    System.out.println("country:"+sd[1]);
+    System.out.println("year:"+sd[2]);
+    System.out.println("commodity:"+sd[3]);
+        System.out.println("weight:"+sd[4]);
+    System.out.println("quantity:"+sd[5]);
+    }
+    if(d!=null)
+    {
+      
+       return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+    }
+      public  static void inst(String val,BTree st)
+	{
+		String [] sd= val.split("\\s,,");
+		if(serch(sd[0],st)==true)
+		{
+		 System.out.println("id  already exist");	
+		}
+		else
+		{
+			 String filePath = "C:\\Users\\vaishnavi\\Desktop\\f8.txt";
+			st.insert(i);
+			try {
+				FileWriter fr= new FileWriter(filePath,true);
+			    BufferedWriter lineWriter = new BufferedWriter(fr);
+			    PrintWriter pw= new  PrintWriter(lineWriter);
+			    pw.println(val);
+			    
+			 
+				     
+			        
+			   
+			    lineWriter.close();
+			} catch (IOException ex) {
+			    System.err.println(ex);
+		}
+			
+		}
+}
+      public  static void extra(String val)
+	{
+            String line=null;
+             try {
+                       String fileName = "C:\\Users\\vaishnavi\\Desktop\\f8.txt";
+        String fn ="C:\\Users\\user\\"+val+".txt";
+            FileReader fileReader = new FileReader(fileName);
+            FileWriter fileWriter = new FileWriter(fn);
+            PrintWriter pw =new PrintWriter(fn);
+      BufferedReader bufferedReader = new BufferedReader(fileReader); 
+      
+             while((line = bufferedReader.readLine()) != null) {
+                
+
+     String[] af=line.split("\\s,");
+     if(af.length>3){
+            	if(af[2].equals(val))
+                {
+                    pw.println(line);
+                    
+                }
+            	 
+     }
+            	
+                 } 
+           
+            
+            		 
+             pw.close();
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(ex);                
+        }
+        catch(IOException ex) {
+            System.out.println(ex);                  
+            
+        }
+        }
+        }
